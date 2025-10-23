@@ -109,7 +109,7 @@ dependencies = [
 [[package]]
 name = "agave-syscalls"
 version = "3.0.7"
-source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#1201c4f3eccfcc39f271bcfe278e11ae5720ddb9"
+source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#51881ed0c188e030015ac69029189a8fddf5d72c"
 dependencies = [
  "bincode",
  "libsecp256k1",
@@ -1423,7 +1423,7 @@ dependencies = [
 [[package]]
 name = "litesvm"
 version = "0.8.1"
-source = "git+https://github.com/procdump/litesvm.git?branch=v0.8.1_feat_dbg_prs#286f1b30377e62c9810f826df772b42c9d19e802"
+source = "git+https://github.com/procdump/litesvm.git?branch=v0.8.1_feat_dbg_prs#fa58ea53e922dd367114ec283ab904badb30eeaa"
 dependencies = [
  "agave-feature-set",
  "agave-reserved-account-keys",
@@ -2406,7 +2406,7 @@ dependencies = [
 [[package]]
 name = "solana-bpf-loader-program"
 version = "3.0.7"
-source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#1201c4f3eccfcc39f271bcfe278e11ae5720ddb9"
+source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#51881ed0c188e030015ac69029189a8fddf5d72c"
 dependencies = [
  "agave-syscalls 3.0.7 (git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs)",
  "bincode",
@@ -2634,7 +2634,7 @@ dependencies = [
 [[package]]
 name = "solana-curve25519"
 version = "3.0.7"
-source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#1201c4f3eccfcc39f271bcfe278e11ae5720ddb9"
+source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#51881ed0c188e030015ac69029189a8fddf5d72c"
 dependencies = [
  "bytemuck",
  "bytemuck_derive",
@@ -3357,7 +3357,7 @@ dependencies = [
 [[package]]
 name = "solana-poseidon"
 version = "3.0.7"
-source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#1201c4f3eccfcc39f271bcfe278e11ae5720ddb9"
+source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#51881ed0c188e030015ac69029189a8fddf5d72c"
 dependencies = [
  "ark-bn254",
  "light-poseidon",
@@ -3615,7 +3615,7 @@ dependencies = [
 [[package]]
 name = "solana-program-runtime"
 version = "3.0.7"
-source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#1201c4f3eccfcc39f271bcfe278e11ae5720ddb9"
+source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#51881ed0c188e030015ac69029189a8fddf5d72c"
 dependencies = [
  "base64 0.22.1",
  "bincode",
@@ -3729,7 +3729,7 @@ checksum = "dcf09694a0fc14e5ffb18f9b7b7c0f15ecb6eac5b5610bf76a1853459d19daf9"
 [[package]]
 name = "solana-sbpf"
 version = "0.12.2"
-source = "git+https://github.com/procdump/sbpf.git?branch=v0.12.2_feat_dbg_prs#138227f8e4a51697fd1b0fe0c6c6e4357716a570"
+source = "git+https://github.com/procdump/sbpf.git?branch=v0.12.2_feat_dbg_prs#5cf5f5dd4d97edea209c51edecc346ee363d6888"
 dependencies = [
  "byteorder",
  "combine",
@@ -4184,7 +4184,7 @@ dependencies = [
 [[package]]
 name = "solana-svm-callback"
 version = "3.0.7"
-source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#1201c4f3eccfcc39f271bcfe278e11ae5720ddb9"
+source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#51881ed0c188e030015ac69029189a8fddf5d72c"
 dependencies = [
  "solana-account 3.1.0",
  "solana-clock 3.0.0",
@@ -4195,12 +4195,12 @@ dependencies = [
 [[package]]
 name = "solana-svm-feature-set"
 version = "3.0.7"
-source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#1201c4f3eccfcc39f271bcfe278e11ae5720ddb9"
+source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#51881ed0c188e030015ac69029189a8fddf5d72c"
 
 [[package]]
 name = "solana-svm-log-collector"
 version = "3.0.7"
-source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#1201c4f3eccfcc39f271bcfe278e11ae5720ddb9"
+source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#51881ed0c188e030015ac69029189a8fddf5d72c"
 dependencies = [
  "log",
 ]
@@ -4208,12 +4208,12 @@ dependencies = [
 [[package]]
 name = "solana-svm-measure"
 version = "3.0.7"
-source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#1201c4f3eccfcc39f271bcfe278e11ae5720ddb9"
+source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#51881ed0c188e030015ac69029189a8fddf5d72c"
 
 [[package]]
 name = "solana-svm-timings"
 version = "3.0.7"
-source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#1201c4f3eccfcc39f271bcfe278e11ae5720ddb9"
+source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#51881ed0c188e030015ac69029189a8fddf5d72c"
 dependencies = [
  "eager",
  "enum-iterator",
@@ -4223,7 +4223,7 @@ dependencies = [
 [[package]]
 name = "solana-svm-transaction"
 version = "3.0.7"
-source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#1201c4f3eccfcc39f271bcfe278e11ae5720ddb9"
+source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#51881ed0c188e030015ac69029189a8fddf5d72c"
 dependencies = [
  "solana-hash 3.0.0",
  "solana-message 3.0.1",
@@ -4245,7 +4245,7 @@ dependencies = [
 [[package]]
 name = "solana-svm-type-overrides"
 version = "3.0.7"
-source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#1201c4f3eccfcc39f271bcfe278e11ae5720ddb9"
+source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#51881ed0c188e030015ac69029189a8fddf5d72c"
 dependencies = [
  "rand 0.8.5",
 ]
@@ -4430,7 +4430,7 @@ dependencies = [
 [[package]]
 name = "solana-transaction-context"
 version = "3.0.7"
-source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#1201c4f3eccfcc39f271bcfe278e11ae5720ddb9"
+source = "git+https://github.com/procdump/agave.git?branch=v3.0.7-feat-dbg-prs#51881ed0c188e030015ac69029189a8fddf5d72c"
 dependencies = [
  "bincode",
  "serde",
