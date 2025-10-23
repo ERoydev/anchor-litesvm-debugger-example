@@ -1,0 +1,29 @@
+[workspace]
+members = [
+    "programs/*"
+]
+resolver = "2"
+[profile.release]
+overflow-checks = true
+lto = "off"
+codegen-units = 1
+debug = true
+opt-level = 0
+
+[profile.release.build-override]
+incremental = false
+codegen-units = 1
+debug = true
+opt-level = 0
+
+[patch.crates-io]
+solana-svm-transaction = { git = "https://github.com/procdump/agave.git", branch = "v3.0.7-feat-dbg-prs" }
+solana-svm-callback = { git = "https://github.com/procdump/agave.git", branch = "v3.0.7-feat-dbg-prs" }
+solana-svm-feature-set = { git = "https://github.com/procdump/agave.git", branch = "v3.0.7-feat-dbg-prs" }
+solana-svm-timings = { git = "https://github.com/procdump/agave.git", branch = "v3.0.7-feat-dbg-prs" }
+solana-svm-log-collector = { git = "https://github.com/procdump/agave.git", branch = "v3.0.7-feat-dbg-prs" }
+solana-svm-measure = { git = "https://github.com/procdump/agave.git", branch = "v3.0.7-feat-dbg-prs" }
+solana-transaction-context = { git = "https://github.com/procdump/agave.git", branch = "v3.0.7-feat-dbg-prs" }
+solana-program-runtime = { git = "https://github.com/procdump/agave.git", branch = "v3.0.7-feat-dbg-prs" }
+solana-bpf-loader-program = { git = "https://github.com/procdump/agave.git", branch = "v3.0.7-feat-dbg-prs" }
+solana-sbpf = { git = "https://github.com/procdump/sbpf.git", branch = "v0.12.2_feat_dbg_prs" }
