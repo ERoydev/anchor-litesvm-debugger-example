@@ -70,7 +70,10 @@ fn test_cpi() {
     assert!(result.is_ok(), "Transaction failed: {:#?}", result.err()); // TODO: IMPORTANT usage of `#` will format the error
 
     svm.expire_blockhash();
-    let message = Message::new(&[instruction_a.clone()], Some(&signer_pubkey));
+    let message = Message::new(
+        &[instruction_a.clone(), instruction_a.clone()],
+        Some(&signer_pubkey),
+    );
     let tx = Transaction::new(&[&signer_keypair], message, svm.latest_blockhash());
 
     // let result = svm.send_transaction(tx);
