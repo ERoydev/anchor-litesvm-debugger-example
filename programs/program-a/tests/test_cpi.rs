@@ -78,10 +78,12 @@ fn test_cpi() {
     assert!(result.is_ok(), "Transaction failed: {:#?}", result.err()); // TODO: IMPORTANT usage of `#` will format the error
 }
 
+#[test]
 fn test_non_cpi() {
+    move_debug_port_var();
     let mut svm: LiteSVM = LiteSVM::new();
 
-    let program_id = pubkey!("2BJiU3UUhRmroYHXN6iEcbuw7PfDAJqcFRv9AFutQxzQ");
+    let program_id = pubkey!("ESHnYJDZfq2giPQeqmhqZucvPHiSVNjPoZxBV6dKKbHA");
     svm.add_program_from_file(program_id, "../../target/deploy/program_a.so")
         .unwrap();
 
@@ -102,7 +104,7 @@ fn test_non_cpi() {
     let message = Message::new(&[instruction_a], Some(&signer_pubkey));
     let tx = Transaction::new(&[&signer_keypair], message, svm.latest_blockhash());
 
-    let result = svm.send_transaction(tx);
+    let result = send_transaction_dbg(&mut svm, tx);
     assert!(result.is_ok(), "Transaction failed: {:#?}", result.err()); // TODO: IMPORTANT usage of `#` will format the error
 }
 
