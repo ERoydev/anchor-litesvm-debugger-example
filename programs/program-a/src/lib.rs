@@ -29,7 +29,7 @@ pub mod program_a {
             ],
             data: program_b_discriminator,
         };
-        
+
         // no signing here
         invoke(&program_b_ix, &account_infos)?;
         // msg!("INVOKE HERE");
@@ -55,7 +55,6 @@ pub struct Cpi<'info> {
     pub program_b: UncheckedAccount<'info>, // Here i receive the programB ID as an account and i use that ID to perform the CPI to it
                                             // pub system_program: Program<'info, System>,
 }
-
 
 #[derive(Accounts)]
 pub struct NonCpi {}
