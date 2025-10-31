@@ -6,15 +6,6 @@ use solana_program::sysvar::slot_history::AccountInfo;
 use solana_program_error::ProgramError;
 use solana_pubkey::Pubkey;
 
-// Place in the Anchor program's lib.rs
-// #[cfg(not(target_os = "solana"))]
-// mod coverage {
-//     use super::*;
-//     use solana_program::instruction::{AccountMeta, Instruction};
-//     use solana_program::program_stubs::{set_syscall_stubs, SyscallStubs};
-//     solana_coverage::anchor_coverage!();
-// }
-
 // solana-keygen new --outfile my_program_id.json
 // solana-keygen pubkey ./my_program_id.json
 pub static MY_PROGRAM_ID: Pubkey =
