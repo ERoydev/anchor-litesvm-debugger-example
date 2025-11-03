@@ -1,5 +1,5 @@
 import { AnchorProvider, Program, Wallet, web3, BN } from "@coral-xyz/anchor";
-import { LiteSVM } from "../local-litesvm";
+import { FailedTransactionMetadata, LiteSVM, TransactionMetadata } from "../local-litesvm";
 
 import A_IDL from "../target/idl/program_a.json";
 import B_IDL from "../target/idl/program_b.json";
@@ -12,9 +12,19 @@ import { ProgramA} from "../target/types/program_a";
 import { ProgramB } from "../target/types/program_b";
 import { assert } from "chai";
 
+function moveDebugPortVar() {
+  const debugPort = process.env.VM_DEBUG_PORT;
+  if (debugPort !== undefined) {
+    delete process.env.VM_DEBUG_PORT;
+    process.env.DEBUG_PORT = debugPort;
+  }
+}
+
 describe("anchor multi program, litesvm tests", () => {
     
     it("test_cpi_from_program_a_to_program_b", async () => {
+        moveDebugPortVar();
+
         const svm_instance = new LiteSVM();
 
         const program_id = new PublicKey("ESHnYJDZfq2giPQeqmhqZucvPHiSVNjPoZxBV6dKKbHA");
@@ -57,11 +67,13 @@ describe("anchor multi program, litesvm tests", () => {
         tx.add(cpi_instruction);
         tx.sign(signer_keypair);
     
-        const result = svm_instance.sendTransaction(tx);
+        const result = sendTransactionDbg(svm_instance, tx);
         console.log("Transaction result:", result);
     });
 
     it("test_non_cpi", async () => {
+        moveDebugPortVar();
+
         const svm_instance = new LiteSVM();
         
         const program_id = new PublicKey("ESHnYJDZfq2giPQeqmhqZucvPHiSVNjPoZxBV6dKKbHA");
@@ -86,7 +98,25 @@ describe("anchor multi program, litesvm tests", () => {
         tx.add(instruction_a);
         tx.sign(signer_keypair);
 
-        const result = svm_instance.sendTransaction(tx);
+        const result = sendTransaction(svm_instance, tx);
         console.log("Transaction result:", result);
     });
 })
+
+function sendTransactionDbg(svm: LiteSVM, tx: web3.Transaction): TransactionMetadata | FailedTransactionMetadata  {
+    let _debug_port = process.env.DEBUG_PORT;
+    process.env.VM_DEBUG_PORT = _debug_port;
+    try {
+        return svm.sendTransaction(tx);
+    } catch (e) {
+        throw e;
+    } finally {
+        if (_debug_port !== undefined) {
+            delete process.env.VM_DEBUG_PORT;
+        }
+    }
+}
+
+function sendTransaction(svm: LiteSVM, tx: web3.Transaction): TransactionMetadata | FailedTransactionMetadata {
+    return svm.sendTransaction(tx);
+}
