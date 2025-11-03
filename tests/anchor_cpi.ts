@@ -58,7 +58,7 @@ describe("anchor multi program, litesvm tests", () => {
         tx.sign(signer_keypair);
     
         const result = svm_instance.sendTransaction(tx);
-        console.log("Transaction result:", result.toString());
+        console.log("Transaction result:", result);
     });
 
     it("test_non_cpi", async () => {
