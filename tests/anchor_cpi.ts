@@ -60,8 +60,8 @@ describe("anchor multi program, litesvm tests", () => {
         tx.add(cpi_instruction);
         tx.sign(signer_keypair);
     
-        // const result = sendTransactionDbg(svm_instance, tx);
-        const result = sendTransaction(svm_instance, tx);
+        const result = sendTransactionDbg(svm_instance, tx);
+        // const result = sendTransaction(svm_instance, tx);
         console.log("Transaction result:", result);
     });
 
@@ -92,7 +92,8 @@ describe("anchor multi program, litesvm tests", () => {
         tx.add(instruction_a);
         tx.sign(signer_keypair);
 
-        const result = sendTransactionDbg(svm_instance, tx);
+        // const result = sendTransactionDbg(svm_instance, tx);
+        const result = sendTransaction(svm_instance, tx);
         console.log("Transaction result:", result);
     });
 })
