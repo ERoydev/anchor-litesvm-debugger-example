@@ -102,19 +102,11 @@ function sendTransactionDbg(
   tx: web3.Transaction
 ): TransactionMetadata | FailedTransactionMetadata {
   console.log("send TX dbg");
-  // return svm.sendTransaction(tx);
-  // let result = env_mutex
-  //   .runExclusive(() => {
   let _debug_port = process.env.SBPF_DEBUG_PORT;
   process.env.VM_DEBUG_PORT = _debug_port;
   let result = svm.sendTransaction(tx);
   delete process.env.VM_DEBUG_PORT;
   return result;
-  //   })
-  //   .then((result) => {
-  //     return result;
-  //   });
-  // return result;
 }
 
 function sendTransaction(svm: LiteSVM, tx: web3.Transaction): TransactionMetadata | FailedTransactionMetadata {
