@@ -7,21 +7,8 @@ use solana_sdk::{
     transaction::{Transaction, VersionedTransaction},
 };
 
-fn move_debug_port_var() {
-    unsafe {
-        let _ = std::env::var("VM_DEBUG_PORT").and_then(|debug_port| {
-            std::env::remove_var("VM_DEBUG_PORT");
-            std::env::set_var("DEBUG_PORT", debug_port);
-            Ok(())
-        });
-    }
-}
-
 #[test]
 fn test_cpi() {
-    // TODO REMOVE
-    move_debug_port_var();
-
     let mut svm: LiteSVM = LiteSVM::new();
 
     // If test fails fix program_ID's
@@ -83,7 +70,6 @@ fn test_cpi() {
 
 #[test]
 fn test_non_cpi() {
-    move_debug_port_var();
     let mut svm: LiteSVM = LiteSVM::new();
 
     let program_id = pubkey!("ESHnYJDZfq2giPQeqmhqZucvPHiSVNjPoZxBV6dKKbHA");
@@ -134,7 +120,7 @@ pub struct DebugPort<'guard> {
 
 impl<'guard> DebugPort<'guard> {
     pub fn open() -> Option<Self> {
-        match std::env::var("DEBUG_PORT") {
+        match std::env::var("SBPF_DEBUG_PORT") {
             Err(_) => None,
             Ok(debug_port) => {
                 let guard = ENV_VARS_MTX.lock().unwrap();
