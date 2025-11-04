@@ -2,7 +2,8 @@
 mod tests {
     use crate::MY_PROGRAM_ID;
 
-    use mollusk_svm::Mollusk;
+    use mollusk_svm::{result::InstructionResult, Mollusk};
+    use solana_sdk::{account::Account, message::Instruction, pubkey::Pubkey};
 
     #[test]
     fn test_process_instruction_mollusk_sbf(
@@ -44,9 +45,56 @@ mod tests {
         ];
 
         // Execute the instruction and get the result.
-        let result = mollusk.process_instruction(&instruction, &accounts);
+        let result = process_instruction_gdb(&mollusk, &instruction, &accounts);
         println!("mollusk result: {:?}", result);
 
         result.raw_result
+    }
+
+    fn process_instruction_gdb(
+        mollusk: &Mollusk,
+        instruction: &Instruction,
+        accounts: &[(Pubkey, Account)],
+    ) -> InstructionResult {
+        let _debug_port = DebugPort::open();
+        mollusk.process_instruction(instruction, accounts)
+    }
+
+    fn process_instruction(
+        mollusk: &Mollusk,
+        instruction: &Instruction,
+        accounts: &[(Pubkey, Account)],
+    ) -> InstructionResult {
+        let _debug_port = DebugPort::open();
+        mollusk.process_instruction(instruction, accounts)
+    }
+
+    static ENV_VARS_MTX: std::sync::Mutex<()> = std::sync::Mutex::new(());
+
+    pub struct DebugPort<'guard> {
+        _guard: std::sync::MutexGuard<'guard, ()>,
+    }
+
+    impl<'guard> DebugPort<'guard> {
+        pub fn open() -> Option<Self> {
+            match std::env::var("SBPF_DEBUG_PORT") {
+                Err(_) => None,
+                Ok(debug_port) => {
+                    let guard = ENV_VARS_MTX.lock().unwrap();
+                    unsafe {
+                        std::env::set_var("VM_DEBUG_PORT", debug_port);
+                    }
+                    Some(Self { _guard: guard })
+                }
+            }
+        }
+    }
+
+    impl<'guard> Drop for DebugPort<'guard> {
+        fn drop(&mut self) {
+            unsafe {
+                std::env::remove_var("VM_DEBUG_PORT");
+            }
+        }
     }
 }
